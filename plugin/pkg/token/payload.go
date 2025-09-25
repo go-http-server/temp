@@ -37,7 +37,7 @@ func NewPayload(username string, roleId int, duration time.Duration) (*Payload, 
 
 func (payload *Payload) Valid() error {
 	if time.Now().After(payload.ExpiredAt) {
-		return errors.New(utils.TOKEN_EXPIRED)
+		return errors.New(utils.TokenExpired)
 	}
 	return nil
 }

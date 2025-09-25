@@ -48,7 +48,7 @@ func TestExpiredToken(t *testing.T) {
 
 	payload, err := maker.VerifyToken(token)
 	require.Error(t, err)
-	require.EqualError(t, err, utils.TOKEN_EXPIRED)
+	require.EqualError(t, err, utils.TokenExpired)
 	require.Nil(t, payload)
 	require.Empty(t, payload)
 }

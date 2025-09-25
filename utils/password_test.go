@@ -13,11 +13,13 @@ func TestGenerateHashPassword(t *testing.T) {
 	require.NoError(t, err)
 	require.NotEmpty(t, hash1)
 	err = ComparePassword(rawPassword, hash1)
+	require.NoError(t, err)
 
 	hash2, err := HashPassword(rawPassword)
 	require.NoError(t, err)
 	require.NotEmpty(t, hash2)
 	err = ComparePassword(rawPassword, hash2)
+	require.NoError(t, err)
 
 	require.NotEqual(t, hash1, hash2)
 

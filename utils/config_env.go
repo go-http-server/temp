@@ -1,3 +1,4 @@
+// Package utils make utils for load enviroment variables, bot telegram notify, ...
 package utils
 
 import (
@@ -7,17 +8,17 @@ import (
 )
 
 type EnvironmentVariables struct {
-	DB_SOURCE             string        `mapstructure:"DB_SOURCE"`
-	ENVIRONMENT           string        `mapstructure:"ENVIRONMENT"`
-	HTTP_SERVER_ADDRESS   string        `mapstructure:"HTTP_SERVER_ADDRESS"`
-	TIME_EXPIRED_TOKEN    time.Duration `mapstructure:"TIME_EXPIRED_TOKEN"`
-	EMAIL_ADDRESS_SENDER  string        `mapstructure:"EMAIL_ADDRESS_SENDER"`
-	EMAIL_PASSWORD_SENDER string        `mapstructure:"EMAIL_PASSWORD_SENDER"`
-	EMAIL_USERNAME_SENDER string        `mapstructure:"EMAIL_USERNAME_SENDER"`
-	REDIS_ADDRESS_SERVER  string        `mapstructure:"REDIS_ADDRESS_SERVER"`
-	REDIS_PASSWORD_SERVER string        `mapstructure:"REDIS_PASSWORD_SERVER"`
-	TELEGRAM_BOT_TOKEN    string        `mapstructure:"TELEGRAM_BOT_TOKEN"`
-	TELEGRAM_CHAT_ID      string        `mapstructure:"TELEGRAM_CHAT_ID"`
+	DBSource            string        `mapstructure:"DB_SOURCE"`
+	ENVIRONMENT         string        `mapstructure:"ENVIRONMENT"`
+	HTTPServerAddress   string        `mapstructure:"HTTP_SERVER_ADDRESS"`
+	TimeExpiredToken    time.Duration `mapstructure:"TIME_EXPIRED_TOKEN"`
+	EmailAddressSender  string        `mapstructure:"EMAIL_ADDRESS_SENDER"`
+	EmailPasswordSender string        `mapstructure:"EMAIL_PASSWORD_SENDER"`
+	EmailUsernameSender string        `mapstructure:"EMAIL_USERNAME_SENDER"`
+	RedisServerAddress  string        `mapstructure:"REDIS_ADDRESS_SERVER"`
+	RedisServerPassword string        `mapstructure:"REDIS_PASSWORD_SERVER"`
+	TelegramBotToken    string        `mapstructure:"TELEGRAM_BOT_TOKEN"`
+	TelegramChatID      string        `mapstructure:"TELEGRAM_CHAT_ID"`
 }
 
 func LoadEnviromentVariables(path string) (config EnvironmentVariables, err error) {

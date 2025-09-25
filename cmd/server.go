@@ -46,20 +46,20 @@ func main() {
 	signalContext, stop := signal.NotifyContext(context.Background(), interruptSignals...)
 	defer stop()
 
-	pool, err := pgxpool.New(signalContext, env.DB_SOURCE)
+	pool, err := pgxpool.New(signalContext, env.DBSource)
 	if err != nil {
 		log.Fatal().Err(err).Msg("Cannot create pool to database")
 	}
 	store := database.NewStore(pool)
 
 	redisOpts := asynq.RedisClientOpt{
-		Addr:     env.REDIS_ADDRESS_SERVER,
-		Password: env.REDIS_PASSWORD_SERVER,
+		Addr:     env.RedisServerAddress,
+		Password: env.RedisServerPassword,
 	}
 
-	emailSender := mailer.NewGmailSender(env.EMAIL_USERNAME_SENDER, env.EMAIL_ADDRESS_SENDER, env.EMAIL_PASSWORD_SENDER)
+	emailSender := mailer.NewGmailSender(env.EmailUsernameSender, env.EmailAddressSender, env.EmailPasswordSender)
 	taskDistributor := worker.NewRedisTaskDistributor(redisOpts)
-	bot := utils.NewBotTelegramService(env.TELEGRAM_BOT_TOKEN, env.TELEGRAM_CHAT_ID)
+	bot := utils.NewBotTelegramService(env.TelegramBotToken, env.TelegramChatID)
 
 	waitGroup, signalContext := errgroup.WithContext(signalContext)
 
@@ -72,7 +72,7 @@ func main() {
 		log.Fatal().Err(err).Msg("Cannot create new server")
 	}
 
-	server.StartServer(signalContext, waitGroup, env.HTTP_SERVER_ADDRESS)
+	server.StartServer(signalContext, waitGroup, env.HTTPServerAddress)
 
 	err = waitGroup.Wait()
 	if err != nil {

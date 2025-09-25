@@ -36,7 +36,7 @@ func (bot BotTelegram) SendMessage(message string) error {
 
 	data, err := json.Marshal(payload)
 	if err != nil {
-		return fmt.Errorf("Cannot marshal payload: %s", err)
+		return fmt.Errorf("cannot marshal payload: %s", err)
 	}
 
 	reader := bytes.NewReader(data)
@@ -44,7 +44,7 @@ func (bot BotTelegram) SendMessage(message string) error {
 
 	_, err = http.Post(urlSendNotify, "application/json", reader)
 	if err != nil {
-		return fmt.Errorf("Cannot request to bot tele: %s", err)
+		return fmt.Errorf("cannot request to bot tele: %s", err)
 	}
 
 	return nil

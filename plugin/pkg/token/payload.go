@@ -21,7 +21,7 @@ type Payload struct {
 func NewPayload(username string, roleId int, duration time.Duration) (*Payload, error) {
 	uuidv4, err := uuid.NewRandom()
 	if err != nil {
-		return nil, fmt.Errorf("Cannot generate uuid: %s", err)
+		return nil, fmt.Errorf("cannot generate uuid: %s", err)
 	}
 
 	payload := &Payload{

@@ -24,7 +24,7 @@ func TestMain(m *testing.M) {
 		log.Fatal().Err(err).Msg("Cannot load environment variables file")
 	}
 
-	connectionPool, err := pgxpool.New(context.Background(), env.DB_SOURCE)
+	connectionPool, err := pgxpool.New(context.Background(), env.DBSource)
 	if err != nil {
 		log.Fatal().Err(err).Msg("Cannot create connection pool into database")
 	}

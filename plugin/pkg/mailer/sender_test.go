@@ -15,7 +15,7 @@ func TestSendMailWithTemplate(t *testing.T) {
 	require.NoError(t, err)
 	require.NotEmpty(t, env)
 
-	sender := NewGmailSender(env.EMAIL_USERNAME_SENDER, env.EMAIL_ADDRESS_SENDER, env.EMAIL_PASSWORD_SENDER)
+	sender := NewGmailSender(env.EmailUsernameSender, env.EmailAddressSender, env.EmailPasswordSender)
 	require.NotNil(t, sender)
 	receiver := UserReceive{
 		Username:     utils.RandomString(6),

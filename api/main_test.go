@@ -14,9 +14,9 @@ import (
 
 func newTestServer(t *testing.T, store database.Store) *Server {
 	env := utils.EnvironmentVariables{
-		DB_SOURCE:           "",
-		HTTP_SERVER_ADDRESS: "",
-		TIME_EXPIRED_TOKEN:  30 * time.Minute,
+		DBSource:          "",
+		HTTPServerAddress: "",
+		TimeExpiredToken:  30 * time.Minute,
 	}
 
 	testServer, err := NewServer(context.Background(), nil, store, env, nil)

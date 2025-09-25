@@ -37,7 +37,7 @@ func NewGmailSender(name, emailAddress, emailAppPassword string) EmailSender {
 func (sender GmailSender) SendWithTemplate(subject, pathTemplate string, receiver UserReceive) error {
 	htmlTemplate, err := template.ParseFiles(pathTemplate)
 	if err != nil {
-		return fmt.Errorf("Error with path template file: %s", err)
+		return fmt.Errorf("error with path template file: %s", err)
 	}
 	message := mail.NewMsg()
 
@@ -71,11 +71,11 @@ func (sender GmailSender) SendWithTemplate(subject, pathTemplate string, receive
 		mail.WithPassword(sender.emailAppPassword),
 	)
 	if err != nil {
-		return fmt.Errorf("Cannot create client mailer: %s", err)
+		return fmt.Errorf("cannot create client mailer: %s", err)
 	}
 
 	if err = client.DialAndSend(message); err != nil {
-		return fmt.Errorf("Cannot delivery mail: %s", err)
+		return fmt.Errorf("cannot delivery mail: %s", err)
 	}
 	return nil
 }

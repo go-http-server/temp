@@ -13,10 +13,10 @@ type CreateUserTXResult struct {
 	User User
 }
 
-func (store *SQLStore) CreateUserTX(ctx context.Context, args CreateUserTXParams) (CreateUserTXResult, error) {
+func (storage *SQLStore) CreateUserTX(ctx context.Context, args CreateUserTXParams) (CreateUserTXResult, error) {
 	var result CreateUserTXResult
 
-	err := store.execTX(ctx, func(q *Queries) error {
+	err := storage.execTX(ctx, func(q *Queries) error {
 		var err error
 		result.User, err = q.CreateUser(ctx, args.CreateUserParams)
 		if err != nil {
